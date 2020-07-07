@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>reminders</title>
+
+{% endblock %}
+
+{% block content %}
+<h1>All reminders</h1>
+
+<hr>
+<h3>creat a new remind</h3>
+<br>
+<form action="/reminers" method="POST">
+  <div class="form groupe">
+    <input type="text" name="title" class="form-control" placeholder="title" required>
+</div>
+<br>
+<div class="form groupe">
+    <input type="text" name="content" class="form-control" placeholder="content" required>
+</div>
+<br>
+<div class="form groupe">
+  <textarea type="text" name="content" class="form-control" placeholder="explaine   content" required></textarea>
+</div>
+<br>
+<div class="form groupe">
+<input  type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00" class="form-control">
+</div>
+<br>
+<button class="btn btn-primary" type="submit">remind</button>
+<br>
+<br>
+<br>
+</form>
+<hr>
+    {% for remind in reminders %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ remind.author }}</a>
+            </div>
+            <h2><a class="article-title" href="#">{{ remind.title }}</a></h2>
+            <p class="article-content">{{ remind.content }}</p>
+            
+          </div>
+        </article>
+    {% endfor %}
+{% endblock  %}
+
+
+
+
+
+
+
